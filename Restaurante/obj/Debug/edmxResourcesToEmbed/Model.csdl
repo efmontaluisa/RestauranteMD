@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestauranteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ingredientes">
+    <Key>
+      <PropertyRef Name="ing_id" />
+    </Key>
+    <Property Name="ing_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pla_id" Type="Int32" Nullable="false" />
+    <Property Name="ing_nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ing_cantidad" Type="Int32" />
+    <NavigationProperty Name="plato" Relationship="Self.fk_ingredie_plato_ing_plato" FromRole="ingredientes" ToRole="plato" />
+  </EntityType>
+  <EntityType Name="plato">
+    <Key>
+      <PropertyRef Name="pla_id" />
+    </Key>
+    <Property Name="pla_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pla_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pla_precio_venta" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <NavigationProperty Name="ingredientes" Relationship="Self.fk_ingredie_plato_ing_plato" FromRole="plato" ToRole="ingredientes" />
+  </EntityType>
+  <Association Name="fk_ingredie_plato_ing_plato">
+    <End Role="plato" Type="Self.plato" Multiplicity="1" />
+    <End Role="ingredientes" Type="Self.ingredientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plato">
+        <PropertyRef Name="pla_id" />
+      </Principal>
+      <Dependent Role="ingredientes">
+        <PropertyRef Name="pla_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RestauranteEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ingredientes" EntityType="Self.ingredientes" />
+    <EntitySet Name="plato" EntityType="Self.plato" />
+    <AssociationSet Name="fk_ingredie_plato_ing_plato" Association="Self.fk_ingredie_plato_ing_plato">
+      <End Role="plato" EntitySet="plato" />
+      <End Role="ingredientes" EntitySet="ingredientes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

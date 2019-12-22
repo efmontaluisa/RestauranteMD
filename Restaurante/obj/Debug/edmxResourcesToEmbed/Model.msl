@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RestauranteModelStoreContainer" CdmEntityContainer="RestauranteEntities">
+    <EntitySetMapping Name="ingredientes">
+      <EntityTypeMapping TypeName="RestauranteModel.ingredientes">
+        <MappingFragment StoreEntitySet="ingredientes">
+          <ScalarProperty Name="ing_id" ColumnName="ing_id" />
+          <ScalarProperty Name="pla_id" ColumnName="pla_id" />
+          <ScalarProperty Name="ing_nombre" ColumnName="ing_nombre" />
+          <ScalarProperty Name="ing_cantidad" ColumnName="ing_cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="plato">
+      <EntityTypeMapping TypeName="RestauranteModel.plato">
+        <MappingFragment StoreEntitySet="plato">
+          <ScalarProperty Name="pla_id" ColumnName="pla_id" />
+          <ScalarProperty Name="pla_nombre" ColumnName="pla_nombre" />
+          <ScalarProperty Name="pla_precio_venta" ColumnName="pla_precio_venta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

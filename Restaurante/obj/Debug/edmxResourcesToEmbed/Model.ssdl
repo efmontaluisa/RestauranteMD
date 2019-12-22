@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestauranteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ingredientes">
+    <Key>
+      <PropertyRef Name="ing_id" />
+    </Key>
+    <Property Name="ing_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pla_id" Type="int" Nullable="false" />
+    <Property Name="ing_nombre" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ing_cantidad" Type="int" />
+  </EntityType>
+  <EntityType Name="plato">
+    <Key>
+      <PropertyRef Name="pla_id" />
+    </Key>
+    <Property Name="pla_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pla_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pla_precio_venta" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_ingredie_plato_ing_plato">
+    <End Role="plato" Type="Self.plato" Multiplicity="1" />
+    <End Role="ingredientes" Type="Self.ingredientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plato">
+        <PropertyRef Name="pla_id" />
+      </Principal>
+      <Dependent Role="ingredientes">
+        <PropertyRef Name="pla_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RestauranteModelStoreContainer">
+    <EntitySet Name="ingredientes" EntityType="Self.ingredientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="plato" EntityType="Self.plato" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_ingredie_plato_ing_plato" Association="Self.fk_ingredie_plato_ing_plato">
+      <End Role="plato" EntitySet="plato" />
+      <End Role="ingredientes" EntitySet="ingredientes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

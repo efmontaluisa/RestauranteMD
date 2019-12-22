@@ -1,0 +1,41 @@
+﻿@model Restaurante.ingredientes
+
+@{
+    ViewBag.Title = "Detalle de Ingredientes";
+}
+
+<h2>Detalle de Ingredientes</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ing_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ing_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ing_cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ing_cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pla_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plato.pla_nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.pla_id }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Regresar a Lista", "Index", null, new { @class = "btn btn-info" })
+</p>

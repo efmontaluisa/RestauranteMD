@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Restaurante.plato>
+
+@{
+    ViewBag.Title = "Platos";
+}
+
+<h2>Platos</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Crear Plato Completo", "CreatePlatoCompleto", null, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pla_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pla_precio_venta)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pla_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pla_precio_venta)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.pla_id }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.pla_id }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.pla_id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

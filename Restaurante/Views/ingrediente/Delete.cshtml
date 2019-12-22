@@ -1,0 +1,47 @@
+﻿@model Restaurante.ingredientes
+
+@{
+    ViewBag.Title = "Borrar Ingrediente";
+}
+
+<h2>Borrar Ingrediente</h2>
+
+<h3>Esta seguro que desea borrar el Ingrediente?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ing_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ing_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ing_cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ing_cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.plato.pla_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plato.pla_nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Borrar" class="btn btn-danger" /> |
+        @Html.ActionLink("Regresar a Lista", "Index", null, new { @class = "btn btn-info" })
+    </div>
+    }
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Restaurante.ingredientes>
+
+@{
+    ViewBag.Title = "Ingredientes";
+}
+
+<h2>Ingredientes</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ing_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ing_cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pla_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ing_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ing_cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.plato.pla_nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ing_id }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.ing_id }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.ing_id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

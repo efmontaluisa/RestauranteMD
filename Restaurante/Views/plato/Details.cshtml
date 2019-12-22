@@ -1,0 +1,33 @@
+﻿@model Restaurante.plato
+
+@{
+    ViewBag.Title = "Detalle de Plato";
+}
+
+<h2>Detalle de Plato</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pla_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pla_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pla_precio_venta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pla_precio_venta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.pla_id }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Regresar a Lista", "Index", null, new { @class = "btn btn-info" })
+</p>
